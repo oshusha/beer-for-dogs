@@ -149,7 +149,7 @@
   .slide.dark h2{color:#fff}
   .slide.dark p{color:var(--cream)}
   .slide.dark .muted{color:rgba(250,247,240,.65)}
-  .decide{max-width:492px}
+  .decide{max-width:600px}
   .decide h2{font-size:36px}
   .decide .frame{
     border:1.5px solid var(--amber);border-radius:8px;padding:32px 32px 26px;margin-top:26px;
@@ -445,14 +445,27 @@
 </section>
 
 <script>
-  // колонка «Решение»: ширина = ширине строки заголовка (любой шрифт, любой экран)
+  // слайд «Решение»: колонка фиксированной ширины, а заголовок масштабируется,
+  // чтобы вторая строка заполнила колонку от края до края (любой шрифт, любой экран)
   (function(){
     const sp = document.getElementById('hl2');
     const col = document.querySelector('.decide');
-    if(!sp || !col) return;
-    const setW = () => { col.style.maxWidth = Math.ceil(sp.getBoundingClientRect().width) + 2 + 'px'; };
-    setW();
-    addEventListener('resize', setW);
+    const h2 = col ? col.querySelector('h2') : null;
+    if(!sp || !col || !h2) return;
+    const fit = () => {
+      h2.style.fontSize = '';
+      const avail = col.clientWidth;
+      const fs0 = parseFloat(getComputedStyle(h2).fontSize);
+      const w = sp.getBoundingClientRect().width;
+      if (w <= 0 || avail <= 0) return;
+      let fs = fs0 * (avail - 2) / w;
+      fs = Math.min(52, Math.max(26, fs));
+      h2.style.fontSize = fs.toFixed(2) + 'px';
+      const w2 = sp.getBoundingClientRect().width;
+      if (w2 > avail) h2.style.fontSize = (fs * (avail - 2) / w2).toFixed(2) + 'px';
+    };
+    fit();
+    addEventListener('resize', fit);
   })();
 
   // клавиатура: стрелки, пробел, PageUp/PageDown
@@ -464,5 +477,5 @@
   });
 </script>
 
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4a9a3e0c9613a7c',t:'MTc5MjAxMjk1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
