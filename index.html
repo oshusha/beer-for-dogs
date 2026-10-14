@@ -15,7 +15,7 @@
     --paper:#ffffff;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  html{scroll-snap-type:y proximity;scroll-behavior:smooth}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     color:var(--ink);background:var(--cream);
@@ -67,7 +67,7 @@
   }
   .funnel .f1{width:100%;background:#210402}
   .funnel .f2{width:62%;background:#df5527}
-  .funnel .f3{width:38%;background:#f2a020;color:#210402}
+  .funnel .f3{width:46%;background:#f2a020;color:#210402}
   .funnel .fnote{font-size:13.5px;color:var(--muted);margin-top:6px}
 
   .proof{
@@ -149,16 +149,17 @@
   .slide.dark h2{color:#fff}
   .slide.dark p{color:var(--cream)}
   .slide.dark .muted{color:rgba(250,247,240,.65)}
-  .decide{max-width:760px}
+  .decide{max-width:492px}
+  .decide h2{font-size:36px}
   .decide .frame{
     border:1.5px solid var(--amber);border-radius:8px;padding:32px 32px 26px;margin-top:26px;
   }
   .decide .frame h3{font-size:17px;color:var(--amber);margin-bottom:14px}
   .decide .frame p{font-size:15.5px;line-height:1.55;margin-bottom:10px}
   .deadline{
-    margin-top:26px;display:inline-block;
-    background:var(--amber);color:var(--dark);border-radius:6px;
-    padding:12px 20px;font-size:15.5px;font-weight:700;
+    margin-top:26px;display:block;
+    background:var(--amber);color:var(--dark);border-radius:8px;
+    padding:14px 32px;font-size:15.5px;font-weight:700;
   }
 
   /* ── приложение ── */
@@ -179,15 +180,25 @@
   }
 
   @media (max-width:640px){
-    .slide{padding:52px 7vw}
+    .slide{padding:44px 6vw}
+    .decide h2{font-size:24px}
     .title-photo{display:none}
     .funnel .fbar{font-size:13px;height:38px}
     .board{gap:24px}
+    .app .tb{font-size:13px}
+    .tb th,.tb td{padding:6px 10px}
+    .app .math{font-size:14px;margin-top:18px}
+    .app .fine{font-size:11.5px;margin-top:10px}
   }
   @media print{
     html{scroll-snap-type:none}
     body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    .slide{min-height:auto;page-break-after:always;padding:40px 10vw}
+    .slide{min-height:auto;page-break-after:always;padding:36px 9vw}
+    .slide:last-child{page-break-after:auto}
+    .app h2{margin-bottom:14px}
+    .app p.lead{font-size:14.5px;margin-bottom:12px}
+    .app .math{margin-top:14px;font-size:13.5px}
+    .app .fine{margin-top:8px}
   }
 </style>
 </head>
@@ -196,7 +207,7 @@
 <!-- 01 титул -->
 <section class="slide title-slide" id="s1">
   <div class="left">
-    <h1>Напитки для питомцев:<br>проверенная категория,<br><em>свободная полка</em></h1>
+    <h1>Напитки для питомцев:<br>проверенная категория,<br><em>свободная ниша</em></h1>
     <p class="sub">Безалкогольный «эль» для собак на мясном бульоне — бутылка 0,33, крафтовая этикетка. Развитие идеи из тестовой аналитики.</p>
   </div>
   <figure class="title-photo">
@@ -311,11 +322,11 @@
   <div class="funnel">
     <div class="frow"><div class="fbar f1">590 млрд ₽ — весь зоорынок</div></div>
     <div class="frow"><div class="fbar f2">≈ 100 млрд — non-food</div></div>
-    <div class="frow"><div class="fbar f3">напитки — один игрок</div></div>
+    <div class="frow"><div class="fbar f3">напитки — 2 бренда + импорт</div></div>
     <div class="fnote">Корма занимают 83% рынка и закрыты крупными игроками — вход через non-food: лакомства, подарки, напитки.</div>
   </div>
   <div class="proof">
-    <b>Спрос доказан дважды.</b> За рубежом «пиво для собак» делали BrewDog и Busch. В России продаётся «Хвост» (SCHWANZ) от «Апиценны» — напиток на ячменном солоде, около 300–370 ₽, канал — зоомагазины и ветаптеки. Подарочной полки никто не занял.
+    <b>Спрос доказан — и не раз.</b> Идея родилась в Нидерландах — Kwispelbier; варили BrewDog и Busch. В России: «Хвост» (SCHWANZ) от «Апиценны» — WB, Ozon, зоомагазины, 240–470 ₽ — и «Собачья Корона» около 150 ₽. Но всё это вет-лакомства: польза, состав, шерсть. Подарка-праздника от пивоваренного бренда в категории нет.
   </div>
 </section>
 
@@ -328,7 +339,7 @@
     <li>Бутылки, укупорка, розлив — наша производственная база</li>
     <li>Этикетка и упаковка — своя дизайн-экспертиза и подрядчики</li>
     <li>Каналы: розница, опт и карточки на маркетплейсах уже работают</li>
-    <li>«Хвост» живёт в ветеринарном канале — мы заходим через подарочную полку и маркетплейсы</li>
+    <li>Существующие игроки — вет-бренды: их рассказ — польза и лакомство; наш заход — подарок от пивоваренного бренда: праздник, крафтовая бутылка, набор «хозяин + пёс»</li>
     <li>Бренд: «пивная» ДНК делает историю с «элем для собак» органичной</li>
   </ul>
 </section>
@@ -374,7 +385,7 @@
   </div>
   <div class="cost">
     <div class="c"><b>100–150 тыс ₽</b><span>стоимость всей проверки: партия, этикетки, карточки, продвижение (ориентир — считаю точно на наших себестоимостях)</span></div>
-    <div class="c"><b>6–8 недель</b><span>от решения до первых продаж</span></div>
+    <div class="c"><b>4–6 недель</b><span>от решения до первых продаж — шаги идут параллельно</span></div>
     <div class="c"><b>Стоп-условие</b><span>через 6 недель конверсия ниже медианы категории — фиксируем выводы и останавливаемся</span></div>
   </div>
 </section>
@@ -384,12 +395,11 @@
   <div class="cnt">08</div>
   <div class="kicker">Решение</div>
   <div class="decide">
-    <h2>Что нужно от учредителей</h2>
+    <h2>Три согласия<br><span id="hl2">для выпуска первой партии</span></h2>
     <div class="frame">
-      <h3>Для запуска новогодней партии необходимо:</h3>
-      <p>1. Согласовать направление и вариант запуска (А / Б / В)</p>
-      <p>2. Дать ресурс на рецептуру: технолог + консультация ветврача</p>
-      <p>3. Подтвердить бюджет тестовой партии</p>
+      <p>1. Согласовать направление (А / Б / В)</p>
+      <p>2. Согласовать ресурс на рецептуру — технолог и ветврач</p>
+      <p>3. Согласовать бюджет тестовой партии</p>
       <p style="margin-top:14px" class="muted">Что я беру на себя: расчёт юнит-экономики, координацию подрядчиков, карточки и запуск — при решении «да».</p>
     </div>
     <div class="deadline">Дедлайн решения — начало ноября: потом окно новогоднего сезона закрывается</div>
@@ -401,10 +411,10 @@
   <div class="cnt">09</div>
   <div class="kicker">Приложение</div>
   <h2>Откуда цифры пилота</h2>
-  <p class="lead">Расчёт на 700 бутылок — середина диапазона 500–1000. Розница 379 ₽ — середина между 349 и 399. На наших себестоимостях посчитаю точно, если согласуем направление.</p>
+  <p class="lead">Считаю на 700 бутылок из диапазона 500–1000. Розница 379 ₽ — из вилки 349–399. На наших себестоимостях посчитаю точно, если согласуем направление.</p>
   <div class="app-grid">
     <div>
-      <h3>Бюджет пилота</h3>
+      <h3>Вложения в пилот</h3>
       <table class="tb">
         <tr><th>Статья</th><th>₽</th></tr>
         <tr><td>Партия: тара, сырьё, розлив — своя база</td><td>~50 000</td></tr>
@@ -429,12 +439,22 @@
     </div>
   </div>
   <div class="math">
-    Если продадим всю партию, вернём около 117 тыс из 135. Получается, проверка спроса стоит примерно 20 тыс ₽ при полной продаже и около 40, если уйдёт 80%. По-моему, недорогая цена за ответ до новогоднего окна.
+    Каждая бутылка приносит около 167 ₽ — после комиссий, логистики и себестоимости. Семьсот бутылок — это примерно 117 тысяч; разовые затраты (этикетка, съёмка, продвижение, ветврач) — около 70. Полная продажа даст около 47 тысяч прибыли, продажа 80% — около 24, а в плюс выходим уже после 420 проданных бутылок. По-моему, это правильная цена проверки: окупается при среднем сценарии, а ответ даёт до новогоднего окна.
   </div>
   <p class="fine">Логистику беру по верхней вилке тарифов WB, комиссию — по верхней границе 12–15%. Цифры предварительные: для решения достаточно порядка величин.</p>
 </section>
 
 <script>
+  // колонка «Решение»: ширина = ширине строки заголовка (любой шрифт, любой экран)
+  (function(){
+    const sp = document.getElementById('hl2');
+    const col = document.querySelector('.decide');
+    if(!sp || !col) return;
+    const setW = () => { col.style.maxWidth = Math.ceil(sp.getBoundingClientRect().width) + 2 + 'px'; };
+    setW();
+    addEventListener('resize', setW);
+  })();
+
   // клавиатура: стрелки, пробел, PageUp/PageDown
   const slides=[...document.querySelectorAll('.slide')];
   document.addEventListener('keydown',e=>{
@@ -444,5 +464,5 @@
   });
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4a8a57a18255a48',t:'MTc5MjAwMjUzMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
